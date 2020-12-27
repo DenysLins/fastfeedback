@@ -19,7 +19,8 @@ export default function Home() {
           <code className={styles.code}>pages/index.js</code>
         </p>
         <button onClick={(e) => auth.signinWithGitHub()}>Sign In</button>
-        <div>{auth?.user}</div>
+        <div>{auth?.user?.displayName}</div>
+        <div>{auth?.user?.email}</div>
       </main>
 
       <footer className={styles.footer}>
