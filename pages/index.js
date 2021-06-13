@@ -1,5 +1,6 @@
-import { Button } from "@chakra-ui/button";
 import { Code, Heading, Text } from "@chakra-ui/layout";
+import { Button } from "@chakra-ui/button";
+
 import { useAuth } from "../lib/auth";
 
 export default function Home() {
@@ -8,16 +9,25 @@ export default function Home() {
   return (
     <main>
       <Heading>Fast Feedback</Heading>
-      <Text>
-        Current user:{" "}
-        <Code>
-          {auth?.user?.name} - {auth?.user?.email}
-        </Code>
-      </Text>
       {auth.user ? (
-        <Button onClick={() => auth.signout()}>Sign Out</Button>
+        <>
+          <Text>
+            Current user:{" "}
+            <Code>
+              {auth?.user?.name} - {auth?.user?.email}
+            </Code>
+          </Text>
+          <Button onClick={() => auth.signout()}>Sign Out</Button>
+        </>
       ) : (
-        <Button onClick={() => auth.signinWithGitHub()}>Sign In</Button>
+        <>
+          <Text>
+            You are not logged
+          </Text>
+          <Button onClick={() => auth.signinWithGitHub()}>Sign In GitHub</Button>
+          <Button onClick={() => auth.signinWithGoogle()}>Sign In Google</Button>
+        </>
+
       )}
     </main>
   );
