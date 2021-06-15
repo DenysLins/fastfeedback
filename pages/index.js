@@ -21,13 +21,14 @@ export default function Home() {
         </>
       ) : (
         <>
-          <Text>
-            You are not logged
-          </Text>
-          <Button onClick={() => auth.signinWithGitHub()}>Sign In GitHub</Button>
-          <Button onClick={() => auth.signinWithGoogle()}>Sign In Google</Button>
+          <Text>You are not logged</Text>
+          <Button onClick={() => auth.signinWithGitHub()}>
+            Sign In GitHub
+          </Button>
+          <Button onClick={() => auth.signinWithGoogle()}>
+            Sign In Google
+          </Button>
         </>
-
       )}
     </main>
   );
