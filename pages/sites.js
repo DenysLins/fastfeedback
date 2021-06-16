@@ -5,6 +5,7 @@ import EmptyState from "@/components/EmptyState";
 import SiteTable from "@/components/SiteTable";
 import SiteTableSkeleton from "@/components/SiteTableSkeleton";
 import fetcher from "@/utils/fetcher";
+import SiteTableHeader from "@/components/SiteTableHeader";
 
 const Dashboard = () => {
   const { data } = useSWR("/api/sites", fetcher);
@@ -13,6 +14,7 @@ const Dashboard = () => {
   if (!data) {
     return (
       <DashboardShell>
+        <SiteTableHeader />
         <SiteTableSkeleton />
       </DashboardShell>
     );
@@ -20,6 +22,7 @@ const Dashboard = () => {
 
   return (
     <DashboardShell>
+      <SiteTableHeader />
       {sites.length ? <SiteTable sites={sites} /> : <EmptyState />}
     </DashboardShell>
   );
