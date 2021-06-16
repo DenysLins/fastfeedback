@@ -6,9 +6,12 @@ import SiteTable from "@/components/SiteTable";
 import SiteTableSkeleton from "@/components/SiteTableSkeleton";
 import fetcher from "@/utils/fetcher";
 import SiteTableHeader from "@/components/SiteTableHeader";
+import { useAuth } from "@/lib/auth";
 
 const Dashboard = () => {
-  const { data } = useSWR("/api/sites", fetcher);
+  const { user } = useAuth();
+
+  const { data } = useSWR(user ? ["/api/sites", user.token] : null, fetcher);
   const sites = data?.sites;
 
   if (!data) {
