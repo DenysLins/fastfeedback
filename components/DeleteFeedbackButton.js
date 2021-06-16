@@ -20,8 +20,6 @@ const DeleteFeedbackButton = ({ feedbackId }) => {
   const onClose = () => setIsOpen(false);
   const auth = useAuth();
 
-  console.log(feedbackId);
-
   const onDelete = () => {
     deleteFeedback(feedbackId);
     mutate(
